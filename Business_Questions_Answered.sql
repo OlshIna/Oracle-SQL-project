@@ -194,7 +194,8 @@ from empl_laid_off ;
             
 --REM   Script: BQ2_Employees_to_be_Relocated
 --REM   2 statements
-            
+ 
+ --1. DEPARTMENTS BY LOCATION
  select distinct employee_id 
     , hr.departments.department_id 
     , department_name 
@@ -213,7 +214,8 @@ full outer join hr.countries
     on hr.locations.country_id = hr.countries.country_id 
 where department_name = 'Shipping'  
     or coalesce(department_name, 'Sales') = 'Sales' ;    
-            
+
+--2. EMPLOYEES WITH THE SALARY HIGHER THAN THE AVERAGE IN THE SALES AND SHIPPING DEPARTMENTS          
 select distinct employee_id 
     , hr.departments.department_id 
     , department_name 
